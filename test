@@ -1,0 +1,47 @@
+import random
+import time
+import datetime
+from random import randint
+print ("vous avez 30 secondes !!")
+tries = 0
+nombre_aleatoire = random.randint(1, 1000)
+print("choisie un nombre entre 1 et 1000") 
+nombre_choisie = int(0)
+
+tries += 1
+past_tries = set() 
+tps_start = time.time()
+
+while nombre_aleatoire != nombre_choisie :
+    nombre_choisie = int(input())
+    if nombre_choisie == '':
+        print(" il faut écrire un nombre chef, recommence")
+        break
+    elif nombre_choisie < nombre_aleatoire :
+        print("c'est plus")
+        tries = tries + 1
+        tps_end = time.time()
+        if tps_end - tps_start <= 30 :
+            print("il reste encore "+ str( 30 + tps_start - tps_end ) + "secondes")
+        elif tps_end - tps_start >= 30:
+            print("le temps est écoulé!!!!!! La réponse était ", nombre_aleatoire,  "")
+            break
+
+    elif nombre_choisie > nombre_aleatoire:
+        print ("c'est plus bas")
+        tries = tries + 1
+        tps_end = time.time()
+        if tps_end - tps_start <= 30 :
+            print("il reste encore "+ str(30+tps_start - tps_end ) + "secondes")
+        elif tps_end - tps_start >= 30:
+            print("le temps est écoulé!!!!!! La réponse était ", nombre_aleatoire, "")
+            break
+
+    elif nombre_choisie == nombre_aleatoire:
+        tries = str(tries)
+        tps_end = time.time()
+        print ("tu as gagné !!!! au bout de "+ tries +" essaies et "+ str(tps_end - tps_start) + " secondes")
+
+    
+
+    
